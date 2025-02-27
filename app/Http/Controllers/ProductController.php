@@ -14,6 +14,13 @@ class ProductController extends Controller
 
     }
 
+    public function showAll()
+    {
+        $products = Product::all();
+        return view( 'welcome' , [ 'products' => $products ] );
+
+    }
+
     public function create(Request $request)
     {
         

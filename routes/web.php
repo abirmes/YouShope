@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Livewire\Categorie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -25,6 +29,17 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::get('/products', [ProductController::class, 'index'])->middleware(['auth'])->name('products');
+Route::get('/users', [UserController::class, 'index'])->middleware(['auth'])->name('users');
+Route::get('/categorie', [CategorieController::class, 'index'])->middleware(['auth'])->name('categorie');
+Route::get('/catupdate/{id}', [CategorieController::class, 'edit'])->name('catupdate/{id}');
+Route::post('/updatecategorie', [CategorieController::class, 'update'])->name('updatecategorie');
+Route::resource('CategorieController', 'CategorieController');
+Route::delete('deleteCategorie/{id}', [CategorieController::class,'delete'])->name('deleteCategorie');
+
+
+Route::get('/welcome', [ProductController::class, 'showAll'])->name('products.showAll');
+Route::get('/welcome/{product}', [ProductController::class, 'show'])->name('products.show');
+
 
 
 

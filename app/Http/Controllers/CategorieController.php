@@ -11,7 +11,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
-        return view( 'categories' , [ 'categories' => $categories ] );
+        return view( 'categorie' , [ 'categories' => $categories ] );
     }
 
     public function create(Request $request)
@@ -22,6 +22,26 @@ class CategorieController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $categorie = Categorie::find($id);
+        return view('/catupdate',['categorie' => $categorie]);
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        
+
+        $categorie = Categorie::find($request->id);
+        $categorie->name = $request->name;
+        $categorie->description = $request->description;
+        $categorie->save();
+
+        return redirect()->route('categorie');
+        
     }
 
     public function delete(int $id)

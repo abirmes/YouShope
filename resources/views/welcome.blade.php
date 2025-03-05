@@ -199,6 +199,7 @@
     <body class="antialiased">
         <!-- resources/views/products/index.blade.php -->
 <x-app-layout>
+    
     <div class="product-page-container">
         <div class="product-page-wrapper">
             <div class="product-content-box">
@@ -221,21 +222,9 @@
                                 
                                 <div class="product-actions">
                                     <span class="product-price">${{ number_format($product->prix, 2) }}</span>
-                                    
-                                    <div class="product-buttons">
-                                        <a href="{{ route('products.show', $product) }}" class="details-button">
-                                            Details
-                                        </a>
-                                        
-                                        <form action="/" method="POST" class="add-to-cart-form">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <button type="submit" class="add-to-cart-button">
-                                                Add to Cart
-                                            </button>
-                                        </form>
-                                    </div>
                                 </div>
+                                <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+
                             </div>
                         </div>
                         @endforeach

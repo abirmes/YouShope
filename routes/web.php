@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
 
 
 Route::view('dashboard', 'dashboard')
@@ -36,9 +35,15 @@ Route::post('/updatecategorie', [CategorieController::class, 'update'])->name('u
 Route::resource('CategorieController', 'CategorieController');
 Route::delete('deleteCategorie/{id}', [CategorieController::class,'delete'])->name('deleteCategorie');
 
+Route::get('/', [ProductController::class, 'showAll'])->name('products.showAll');
+// Route::get('/welcome/{product}', [ProductController::class, 'show'])->name('products.show');
 
-Route::get('/welcome', [ProductController::class, 'showAll'])->name('products.showAll');
-Route::get('/welcome/{product}', [ProductController::class, 'show'])->name('products.show');
+
+
+Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
 
 
 

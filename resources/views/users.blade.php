@@ -23,6 +23,7 @@
                             <td class="border border-gray-300 ...">{{$user->email}}</td>
                             <td class="border border-gray-300 ...">
                                 <a href="/" class="btn btn-primary">update</a>
+                                <a href="/" class="btn btn-primary">delete</a>
                             </td>
                         </tr>
                         @endforeach

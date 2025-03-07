@@ -21,7 +21,8 @@ class Product extends Model
     public function categorie(){
         return $this->hasOne(Categorie::class);
     }
+
     public function commandItem(){
-        return $this->belongsToMany(CommandItem::class);
+        return $this->hasMany(CommandItem::class);
     }
 }
